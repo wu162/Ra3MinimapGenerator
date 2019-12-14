@@ -5,17 +5,26 @@
 # Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
-
+from base64 import b64decode
+import os
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
+
+from icon import Icon
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(600, 400)
-        MainWindow.setWindowIcon(QIcon('icon.ico'))
+
+        #加载图标
+        with open('tmp.ico', 'wb') as tmp:
+            tmp.write(b64decode(Icon().img))
+        MainWindow.setWindowIcon(QIcon('tmp.ico'))
+        os.remove('tmp.ico')
+
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.mapPanel = QtWidgets.QLabel(self.centralwidget)

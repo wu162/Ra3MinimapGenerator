@@ -134,7 +134,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
                 minimap.save(savePath)
 
     def about(self):
-        webbrowser.open('http://www.baidu.com')
+        webbrowser.open('https://github.com/wu162/Ra3MinimapGenerator')
 
 
 if __name__ == '__main__':
