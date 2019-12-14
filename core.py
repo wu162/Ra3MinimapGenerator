@@ -1,5 +1,4 @@
-# import cv2
-from cv2 import GaussianBlur,Canny
+import cv2
 import numpy as np
 from PIL import Image
 
@@ -53,8 +52,8 @@ def getEdge(grey):
     # cannyedgeOriginal = cv2.Canny(grey, 40, 70)
     # cannyedgeOriginal = cv2.Sobel(grey, cv2.CV_8U, 0, 1, ksize=5)
 
-    grey = GaussianBlur(grey, (5, 5), 2)
-    cannyedgeOriginal = Canny(grey, 10, 20, L2gradient=True)
+    grey = cv2.GaussianBlur(grey, (5, 5), 2)
+    cannyedgeOriginal = cv2.Canny(grey, 10, 20, L2gradient=True)
 
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
     cannyedge = cv2.dilate(cannyedgeOriginal, kernel)

@@ -56,7 +56,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
             QMessageBox.information(self, "警告",
                                     self.tr("您还没有选择地图!"))
             return
-        filepath = self.mapPath + '\\' + self.mapName + '\\' + self.mapName + '.tga'
+        filepath = os.path.join(self.mapPath, self.mapName, self.mapName) + '.tga'
         try:
             self.res = GenMiniMap(filepath, self.style, int(self.option))
             self.status = True
@@ -100,6 +100,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
     def getMaps(self):
         env_dist = os.environ
         # 先不管路径是否存在
+        mapPath = env_dist.get('appdata')
         mapPath = env_dist.get('appdata') + '\Red Alert 3\Maps'
         maps = []
         if not os.path.exists(mapPath):
@@ -110,14 +111,15 @@ class MyWindow(QMainWindow, Ui_MainWindow):
 
         for path, dir_list, file_list in dir:
             for dir_name in dir_list:
-                if os.path.exists(mapPath + '\\' + dir_name + '\\' + dir_name + '.tga'):
+                if os.path.exists(os.path.join(mapPath, dir_name, dir_name) + '.tga'):
                     maps.append(dir_name)
 
         return maps, mapPath
 
     def saveMap(self, mapdata):
         minimap = Image.fromarray(mapdata)
-        savePath = self.mapPath + '\\' + self.mapName + '\\' + self.mapName + '_art.tga'
+        savePath = os.path.join(self.mapPath, self.mapName, self.mapName)
+        savePath = savePath + '_art.tga'
         if not os.path.exists(savePath):
             minimap.save(savePath)
         else:
