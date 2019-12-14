@@ -147,19 +147,11 @@ def colorBlock(labels, grey, diff, avg, blocknum,color):
 
 
 def addHigherEdge(resR, resG, resB, grey, avg):
-    # kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
-    # edge = cv2.morphologyEx(edge, cv2.MORPH_CLOSE, kernel)
-
-    # kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
-    # edge = cv2.dilate(edge, kernel)
-    # edge = cv2.medianBlur(edge, 3)
-    # kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
-    # edge = cv2.erode(edge, kernel)
 
     if (avg.shape[0] >= 3):
-        grey[grey < avg[2] - 4] = 0
+        grey[grey < avg[1] + 10] = 0
     grey = cv2.GaussianBlur(grey, (5, 5), 2)
-    edge = cv2.Canny(grey, 30, 40, L2gradient=True)
+    edge = cv2.Canny(grey, 90, 100, L2gradient=True)
 
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
     edge = cv2.dilate(edge, kernel)
@@ -173,6 +165,7 @@ def addHigherEdge(resR, resG, resB, grey, avg):
 
 
 def getBones(cannyedge):
+    cannyedge=np.invert(cannyedge)
     cannyedge = cannyedge.astype(np.uint8)
     cannyedge = np.reshape(cannyedge, (cannyedge.shape[0], cannyedge.shape[1], 1))
     res = np.concatenate((cannyedge, cannyedge, cannyedge), 2)

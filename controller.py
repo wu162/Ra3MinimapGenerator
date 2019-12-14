@@ -16,7 +16,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
 
         self.mapName = ''
 
-        # 左边背景图
+        # 一开始禁止保存
         self.status = False
 
         # 填充地图列表
