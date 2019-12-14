@@ -1,5 +1,6 @@
 import os
 import sys
+import webbrowser
 
 from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
@@ -48,6 +49,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.saveButton.clicked.connect(self.onSave)
         self.viewButton.clicked.connect(self.onView)
         self.saveButton.setEnabled(False)
+        self.actionabout.triggered.connect(self.about)
 
     def onView(self):
         if len(self.maplistBox.selectedItems()) > 0:
@@ -130,6 +132,9 @@ class MyWindow(QMainWindow, Ui_MainWindow):
             if button == QMessageBox.Ok:
                 os.remove(savePath)
                 minimap.save(savePath)
+
+    def about(self):
+        webbrowser.open('http://www.baidu.com')
 
 
 if __name__ == '__main__':
