@@ -1,0 +1,63 @@
+﻿<Window x:Class="MinimapGen.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MinimapGen"
+        mc:Ignorable="d"
+        Title="红警3小地图生成器" Height="400" Width="700" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <StackPanel Orientation="Vertical">
+        <Menu>
+            <MenuItem Header="帮助">
+            <MenuItem Header="关于..." Click="onAbout"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel Orientation="Horizontal">
+            <!-- 左边 -->
+            <StackPanel Orientation="Vertical">
+                <Label Name="mapName" HorizontalAlignment="Center" />
+                <Image VerticalAlignment="Top" Name="minimap" Margin="20 5 20 20" Height="300" Width="300" />
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="20 20 0 0">
+                <!-- 选择地图 -->
+                <StackPanel Orientation="Horizontal" Margin="5 0 0 0">
+                    <Button Click="onChooseMap" Width="100" Height="30" Margin="5 0 10 10">选择地图</Button>
+                </StackPanel>
+
+
+                <!-- <GroupBox Height="选择风格"> -->
+                <!--     <StackPanel> -->
+                <!--         <RadioButton GroupName="style" IsChecked="True">草原</RadioButton> -->
+                <!--         <RadioButton GroupName="style">雪地</RadioButton> -->
+                <!--         <RadioButton GroupName="style">要塞</RadioButton> -->
+                <!--     </StackPanel> -->
+                <!-- </GroupBox> -->
+                <GroupBox Header="选择风格" Margin="10" Padding="10">
+                    <StackPanel>
+                        <RadioButton GroupName="style" Name="style1" Margin="0 0 0 10" Checked="onChooseStyle">草原（最多4层陆地）</RadioButton>
+                        <RadioButton GroupName="style" Name="style2" Margin="0 0 0 10" Checked="onChooseStyle">雪地（最多3层陆地）</RadioButton>
+                        <RadioButton GroupName="style" Name="style3" Margin="0" Checked="onChooseStyle">要塞（最多2层陆地）</RadioButton>
+                        <RadioButton GroupName="style" Name="style4" Margin="0 10 0 10" Checked="onChooseStyle">
+                            <WrapPanel>
+                                <Label Content="自定义" />
+                                <Button Name="ChooseColorBtn" Click="onChooseColor" IsEnabled="False">选择颜色</Button>
+                            </WrapPanel>
+                        </RadioButton>
+                    </StackPanel>
+                </GroupBox>
+
+                <CheckBox Name="expandEdgeCheck" Margin="10 0 10 20" Checked="onCheckExpandEdge"
+                          Unchecked="onCheckExpandEdge" IsChecked="False">
+                    边缘加粗（建议边缘过细时选择）
+                </CheckBox>
+                <!-- 预览 -->
+                <StackPanel Orientation="Horizontal">
+                    <Button Click="onPreview" Width="130" Height="50" Margin="10 0 10 20" HorizontalAlignment="Left">预览</Button>
+                    <Button Click="onSave" Width="130" Height="50" Margin="10 0 0 20" HorizontalAlignment="Left">保存</Button>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>
