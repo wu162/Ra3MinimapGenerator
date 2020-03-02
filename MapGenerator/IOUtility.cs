@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace MinimapGen.MapGenerator
@@ -308,7 +309,16 @@ namespace MinimapGen.MapGenerator
         public static void checkUpdate(double version)
         {
             WebClient webClient = new WebClient();
-            string outText = webClient.DownloadString("");
+            string NewVersion = webClient.DownloadString("https://raw.githubusercontent.com/wu162/Ra3MinimapGenerator/master/version.txt");
+            if (NewVersion.Equals(version.ToString()))
+            {
+                return;
+            }
+            else
+            {
+                string downloadUrl = webClient.DownloadString("https://raw.githubusercontent.com/wu162/Ra3MinimapGenerator/master/downloadUrl.txt");
+                MessageBox.Show("no");
+            }
         }
     }
 }
