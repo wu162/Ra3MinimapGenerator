@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\RiderProject\MinimapGen\obj\Debug\
+D:\RiderProject\Ra3MinimapGenerator\obj\Debug\
 MinimapGen
 none
 false
 DEBUG;TRACE
-D:\RiderProject\MinimapGen\App.xaml
+D:\RiderProject\Ra3MinimapGenerator\App.xaml
 3-545327552
 
 9-2054165289
-15643273091
+151109464421
 UI\ChooseMapDialog.xaml;UI\ColorInputDialog.xaml;UI\MainWindow.xaml;
 
 False

@@ -88,6 +88,11 @@ namespace MinimapGen
                     MessageBox.Show("保存成功");
                 }
             }
+            else
+            {
+                IOUtility.SaveTGA(core.Minimap,core.SavePath);
+                MessageBox.Show("保存成功");
+            }
         }
 
         private void onCheckExpandEdge(object sender, RoutedEventArgs e)
