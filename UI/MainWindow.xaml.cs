@@ -120,11 +120,5 @@ namespace MinimapGen
         {
             Process.Start("https://github.com/wu162/Ra3MinimapGenerator");
         }
-
-        private void onUpdate(object sender, RoutedEventArgs e)
-        {
-            WebClient webClient = new WebClient();
-            string outText = webClient.DownloadString("https://raw.githubusercontent.com/wu162/Ra3MinimapGenerator/master/App.xaml.cs");
-        }
     }
 }
