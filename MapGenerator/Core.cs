@@ -356,7 +356,9 @@ namespace MinimapGen.MapGenerator
                 heights.Add(grouping.Key);
             }
 
-            return (double[]) heights.ToArray(typeof(double));
+            double[] result = (double[]) heights.ToArray(typeof(double));
+            Array.Sort(result);
+            return result;
         }
     }
 }
