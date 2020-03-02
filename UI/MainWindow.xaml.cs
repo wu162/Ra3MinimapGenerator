@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Windows;
@@ -15,7 +16,7 @@ namespace MinimapGen
         private Core core;
         private static int style;
         private static bool expandEdge;
-        private static double version=1.1;
+        private static String version="1.2.0";
 
         public static bool ExpandEdge => expandEdge;
 
@@ -26,7 +27,20 @@ namespace MinimapGen
             InitializeComponent();  
             core = new Core();
             style = 0;
-            IOUtility.checkUpdate(version);
+            ProcessUpdate(IOUtility.checkUpdate(version));
+        }
+
+        private void ProcessUpdate(string downloadUrl)
+        {
+            if (downloadUrl!=null)
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show("发现新版本，请前往下载", "更新", MessageBoxButton.OK);
+                if (messageBoxResult == MessageBoxResult.OK)
+                {
+                    Process.Start(downloadUrl);
+                    Application.Current.Shutdown(-1);
+                }
+            }
         }
 
         private void onPreview(object sender, RoutedEventArgs e)
