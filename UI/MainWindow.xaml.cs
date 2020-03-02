@@ -1,8 +1,8 @@
-﻿using System;
+﻿using System.Diagnostics;
 using System.IO;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using MinimapGen.MapGenerator;
 
 namespace MinimapGen
@@ -15,6 +15,7 @@ namespace MinimapGen
         private Core core;
         private static int style;
         private static bool expandEdge;
+        private static double version=1.1;
 
         public static bool ExpandEdge => expandEdge;
 
@@ -25,6 +26,7 @@ namespace MinimapGen
             InitializeComponent();  
             core = new Core();
             style = 0;
+            IOUtility.checkUpdate(version);
         }
 
         private void onPreview(object sender, RoutedEventArgs e)
@@ -102,7 +104,13 @@ namespace MinimapGen
 
         private void onAbout(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/wu162/Ra3MinimapGenerator");
+            Process.Start("https://github.com/wu162/Ra3MinimapGenerator");
+        }
+
+        private void onUpdate(object sender, RoutedEventArgs e)
+        {
+            WebClient webClient = new WebClient();
+            string outText = webClient.DownloadString("https://raw.githubusercontent.com/wu162/Ra3MinimapGenerator/master/App.xaml.cs");
         }
     }
 }

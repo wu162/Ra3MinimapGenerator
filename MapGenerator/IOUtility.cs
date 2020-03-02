@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Net;
 using System.Windows.Media.Imaging;
 
 namespace MinimapGen.MapGenerator
@@ -302,6 +303,12 @@ namespace MinimapGen.MapGenerator
             }
 
             return result;
+        }
+
+        public static void checkUpdate(double version)
+        {
+            WebClient webClient = new WebClient();
+            string outText = webClient.DownloadString("");
         }
     }
 }
