@@ -72,6 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MapGenerator\WebClientEx.cs" />
     <Compile Include="UI\ChooseMapDialog.xaml.cs">
       <DependentUpon>ChooseMapDialog.xaml</DependentUpon>
     </Compile>

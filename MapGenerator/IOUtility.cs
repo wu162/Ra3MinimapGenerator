@@ -307,16 +307,23 @@ namespace MinimapGen.MapGenerator
 
         public static String checkUpdate(string version)
         {
-            WebClient webClient = new WebClient();
-            string NewVersion = webClient.DownloadString("https://raw.githubusercontent.com/wu162/Ra3MinimapGenerator/master/version.txt");
-            if (NewVersion.Equals(version))
+            WebClientEx webClient = new WebClientEx();
+            try
+            {
+                string NewVersion = webClient.DownloadString("https://raw.githubusercontent.com/wu162/Ra3MinimapGenerator/master/version.txt");
+                if (NewVersion.Equals(version))
+                {
+                    return null;
+                }
+                else
+                {
+                    string downloadUrl = webClient.DownloadString("https://raw.githubusercontent.com/wu162/Ra3MinimapGenerator/master/downloadUrl.txt");
+                    return downloadUrl;
+                }
+            }
+            catch (Exception e)
             {
                 return null;
-            }
-            else
-            {
-                string downloadUrl = webClient.DownloadString("https://raw.githubusercontent.com/wu162/Ra3MinimapGenerator/master/downloadUrl.txt");
-                return downloadUrl;
             }
         }
     }

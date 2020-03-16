@@ -34,8 +34,8 @@ namespace MinimapGen
         {
             if (downloadUrl!=null)
             {
-                MessageBoxResult messageBoxResult = MessageBox.Show("发现新版本，请前往下载", "更新", MessageBoxButton.OK);
-                if (messageBoxResult == MessageBoxResult.OK)
+                MessageBoxResult messageBoxResult = MessageBox.Show("发现新版本，是否前往下载", "更新", MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
                 {
                     Process.Start(downloadUrl);
                     Application.Current.Shutdown(-1);

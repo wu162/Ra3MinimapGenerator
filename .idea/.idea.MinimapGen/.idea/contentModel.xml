@@ -12,6 +12,7 @@
         <e p="Core.cs" t="Include" />
         <e p="IOUtility.cs" t="Include" />
         <e p="MapHelper.cs" t="Include" />
+        <e p="WebClientEx.cs" t="Include" />
       </e>
       <e p="MinimapGen.csproj" t="IncludeRecursive" />
       <e p="MinimapGen.sln" t="IncludeFlat" />
