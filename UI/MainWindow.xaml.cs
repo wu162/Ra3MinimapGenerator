@@ -16,7 +16,7 @@ namespace MinimapGen
         private Core core;
         private static int style;
         private static bool expandEdge;
-        private static String version="1.2.0";
+        private static String version="1.2.1";
 
         public static bool ExpandEdge => expandEdge;
 
@@ -118,7 +118,7 @@ namespace MinimapGen
 
         private void onAbout(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/wu162/Ra3MinimapGenerator");
+            Process.Start("https://gitee.com/wu162/Ra3MinimapGenerator");
         }
     }
 }
