@@ -237,6 +237,13 @@ namespace MinimapGen.MapGenerator
                         continue;
                     }
 
+                    //一些超高最高陆地层的特殊情况
+                    if (heightMapData[i,j].CompareTo(heights[heights.Length-1])==1)
+                    {
+                        bitmap.SetPixel(j, playableHeight - i - 1, colors[colors.Length-1]);
+                        continue;
+                    }
+
                     //平坦陆地着色
                     bool notColored = true;
                     for (int k = 0; k < heights.Length; k++)
@@ -247,11 +254,20 @@ namespace MinimapGen.MapGenerator
                             notColored = false;
                             break;
                         }
-                        else if (heightMapData[i, j] - heights[0] > 0.0001 && k < heights.Length - 1 &&
-                                 !heightMapData[i, j].Equals(heights[k + 1]))
+                        // else if (heightMapData[i, j] - heights[0] > 0.0001 && k < heights.Length - 1 &&
+                        //          !heightMapData[i, j].Equals(heights[k + 1]))
+                        // {
+                        //     Color median = IOUtility.interpolateColor(heightMapData[i, j], heights[k], heights[k + 1],
+                        //         colors[k], colors[k + 1]);
+                        //     bitmap.SetPixel(j, playableHeight - i - 1, median);
+                        //     notColored = false;
+                        //     break;
+                        // }
+                        else if(heightMapData[i, j].CompareTo(heights[0])==1 && IOUtility.needInterpolate(heightMapData[i, j],heights))
                         {
-                            Color median = IOUtility.interpolateColor(heightMapData[i, j], heights[k], heights[k + 1],
-                                colors[k], colors[k + 1]);
+                            int index = IOUtility.findNearHeight(heightMapData[i, j], heights);
+                            Color median = IOUtility.interpolateColor(heightMapData[i, j], heights[index], heights[index + 1],
+                                colors[index], colors[index + 1]);
                             bitmap.SetPixel(j, playableHeight - i - 1, median);
                             notColored = false;
                             break;

@@ -68,3 +68,4 @@ D:\RiderProject\Ra3MinimapGenerator\obj\Debug\MinimapGen.g.resources
 D:\RiderProject\Ra3MinimapGenerator\obj\Debug\MinimapGen.Properties.Resources.resources
 D:\RiderProject\Ra3MinimapGenerator\obj\Debug\MinimapGen.csproj.GenerateResource.cache
 D:\RiderProject\Ra3MinimapGenerator\obj\Debug\MinimapGen.csproj.CopyComplete
+D:\RiderProject\Ra3MinimapGenerator\obj\Debug\MinimapGen.csproj.CoreCompileInputs.cache

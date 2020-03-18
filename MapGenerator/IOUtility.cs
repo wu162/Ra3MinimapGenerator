@@ -275,6 +275,10 @@ namespace MinimapGen.MapGenerator
             int resR = (int) (ratio * diffR) + color1.R;
             int resG = (int) (ratio * diffG) + color1.G;
             int resB = (int) (ratio * diffB) + color1.B;
+            // if (resR > 256)
+            // {
+            //     resR = 30;
+            // }
             return Color.FromArgb(255, resR, resG, resB);
         }
 
@@ -325,6 +329,40 @@ namespace MinimapGen.MapGenerator
             {
                 return null;
             }
+        }
+
+        public static int findNearHeight(double target, double[] heights)
+        {
+            double min = Math.Abs(target-heights[0]);
+            int index = 0;
+            for (int i = 0; i < heights.Length; i++)
+            {
+                if (Math.Abs(target-heights[i]).CompareTo(min)==-1)
+                {
+                    min = Math.Abs(target - heights[i]);
+                    index = i;
+                }
+            }
+
+            if (target.CompareTo(heights[index])==-1)
+            {
+                index--;
+            }
+
+            return index;
+        }
+
+        public static bool needInterpolate(double target, double[] heights)
+        {
+            for (int i = 0; i < heights.Length; i++)
+            {
+                if (target.Equals(heights[i]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

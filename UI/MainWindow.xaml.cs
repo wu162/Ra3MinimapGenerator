@@ -16,7 +16,7 @@ namespace MinimapGen
         private Core core;
         private static int style;
         private static bool expandEdge;
-        private static String version="1.2.1";
+        private static String version="1.2.2";
 
         public static bool ExpandEdge => expandEdge;
 
