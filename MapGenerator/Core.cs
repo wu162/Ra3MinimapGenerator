@@ -240,7 +240,7 @@ namespace MinimapGen.MapGenerator
                     //一些超高最高陆地层的特殊情况
                     if (heightMapData[i,j].CompareTo(heights[heights.Length-1])==1)
                     {
-                        bitmap.SetPixel(j, playableHeight - i - 1, colors[colors.Length-1]);
+                        bitmap.SetPixel(j, playableHeight - i - 1, colors[heights.Length-1]);
                         continue;
                     }
 
