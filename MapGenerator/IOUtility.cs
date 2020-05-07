@@ -314,14 +314,14 @@ namespace MinimapGen.MapGenerator
             WebClientEx webClient = new WebClientEx();
             try
             {
-                string NewVersion = webClient.DownloadString("https://raw.githubusercontent.com/wu162/Ra3MinimapGenerator/master/version.txt");
+                string NewVersion = webClient.DownloadString("https://gitee.com/wu162/Ra3MinimapGenerator/raw/master/version.txt/");
                 if (NewVersion.Equals(version))
                 {
                     return null;
                 }
                 else
                 {
-                    string downloadUrl = webClient.DownloadString("https://raw.githubusercontent.com/wu162/Ra3MinimapGenerator/master/downloadUrl.txt");
+                    string downloadUrl = webClient.DownloadString("https://gitee.com/wu162/Ra3MinimapGenerator/raw/master/downloadUrl.txt");
                     return downloadUrl;
                 }
             }

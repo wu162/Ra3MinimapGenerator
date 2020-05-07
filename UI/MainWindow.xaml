@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MinimapGen"
         mc:Ignorable="d"
-        Title="红警3小地图生成器_v1.2.2" Height="400" Width="700" WindowStartupLocation="CenterScreen"
+        Title="红警3小地图生成器_v1.2.3" Height="400" Width="700" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <StackPanel Orientation="Vertical">
         <Menu>
